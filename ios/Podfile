@@ -3,14 +3,6 @@ require_relative '../node_modules/@react-native-community/cli-platform-ios/nativ
 
 platform :ios, '12.0'
 
-permissions_path = '../node_modules/react-native-permissions/ios'
-
-pod 'Permission-Camera', :path => "#{permissions_path}/Camera"
-pod 'Permission-FaceID', :path => "#{permissions_path}/FaceID"
-pod 'Permission-LocationAccuracy', :path => "#{permissions_path}/LocationAccuracy"
-pod 'Permission-LocationAlways', :path => "#{permissions_path}/LocationAlways"
-pod 'Permission-LocationWhenInUse', :path => "#{permissions_path}/LocationWhenInUse"
-
 pod 'React-RCTText', :path => '../node_modules/react-native/Libraries/Text', :modular_headers => true
 pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
 

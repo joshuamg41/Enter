@@ -83,7 +83,7 @@ export default function BarcodeScanner({route, navigation}) {
   });
 
   const onBarCodeDetected = (results: TextResult[]) => {
-    if (continuous == false && scanned == false) {
+    if (continuous == true && scanned == false) {
       console.log('Barcodes detected. Navigating');
       setIsActive(false);
       scanned = true;
