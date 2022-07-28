@@ -125,7 +125,7 @@ const EmployeeForm = (props: ScreenProps) => {
     }
   };
 
-  const postForm = (values: EmployeeFormState, _actions: any) => {
+  const postForm = (values: EmployeeFormState, actions: any) => {
     const {photo} = props;
     if (!photo?.path) {
       //@ts-ignore
@@ -178,11 +178,13 @@ const EmployeeForm = (props: ScreenProps) => {
         laborID: values.labor === undefined ? edit?.laborID : values.labor,
         proyectosIds:
           values.proyectosIds === undefined
-            ? edit.proyectosIds
-            : projects.find(
-                (res: {name: string | undefined}) =>
-                  res.name === values.proyectosIds,
-              ).id,
+            ? [edit.proyectosIds]
+            : [
+                projects.find(
+                  (res: {name: string | undefined}) =>
+                    res.name === values.proyectosIds,
+                ).id,
+              ],
 
         docNumber: edit?.docNumber,
         provinciaId: edit.provinciaId, //aqui hay que cambiar
@@ -370,17 +372,17 @@ const EmployeeForm = (props: ScreenProps) => {
             textContentType="familyName"
             autoCapitalize="none"
           />
+          <PickerSelect
+            title="Tipo de Empleado"
+            placeholder="Seleccione tipo de Empleado"
+            data={EmployeeTypeSelect}
+            iconName="document-text"
+            value={values.isContractor}
+            onValueChange={onStateChange('isContractor')}
+            onPickerBlur={onBlur('isContractor')}
+            showError={touched.isContractor && errors.isContractor}
+          />
         </CheckRender>
-        <PickerSelect
-          title="Tipo de Empleado"
-          placeholder="Seleccione tipo de Empleado"
-          data={EmployeeTypeSelect}
-          iconName="document-text"
-          value={values.isContractor}
-          onValueChange={onStateChange('isContractor')}
-          onPickerBlur={onBlur('isContractor')}
-          showError={touched.isContractor && errors.isContractor}
-        />
         <PickerSelect
           title="Labor"
           data={laborescopy}

@@ -98,11 +98,11 @@ const Config = (props: ScreenProps) => {
 
         <Text style={Styles.subTitle}>Cuenta</Text>
         <Separator height={METRICS.medium10} />
-        <ConfigButton
+        {/* <ConfigButton
           label="Cambiar contraseña"
           leftIcon="lock-closed-outline"
           onPress={() => {}}
-        />
+        /> */}
         <ConfigButton
           label="Cerrar sesión"
           onPress={() => navigateAndReset('Welcome')}

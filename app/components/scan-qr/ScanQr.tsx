@@ -487,48 +487,60 @@ export default function BarcodeScanner(props) {
     }
   };
   const registerEntry = async () => {
-    const resApi = await BaseApi.post('/employees/employeeEntry', {
-      id: userId,
-      proyectoID: props.route.params.proyectoID,
-    });
-    setContinuos(false);
-    console.log(resApi);
-    if (resApi.data) {
-      Alert.alert(resApi.data.message || resApi.data);
-      setModal(false);
-    } else {
-      setMessage('Entrada Registrada');
-      setModal(false);
+    try {
+      const resApi = await BaseApi.post('/employees/employeeEntry', {
+        id: userId,
+        proyectoID: props.route.params.proyectoID,
+      });
+      setContinuos(false);
+      console.log(resApi);
+      if (resApi.data) {
+        Alert.alert(resApi.data.message || resApi.data);
+        setModal(false);
+      } else {
+        setMessage('Entrada Registrada');
+        setModal(false);
+      }
+    } catch (error) {
+      console.log(error);
     }
   };
   const registerExit = async () => {
-    const resApi = await BaseApi.post('/employees/employeeExit', {
-      id: userId,
-      proyectoID: props.route.params.proyectoID,
-    });
-    setContinuos(false);
-    console.log(resApi);
-    if (resApi.data) {
-      Alert.alert(resApi.data.message || resApi.data);
-      setModal(false);
-    } else {
-      setMessage('Salida Registrada');
-      setModal(false);
+    try {
+      const resApi = await BaseApi.post('/employees/employeeExit', {
+        id: userId,
+        proyectoID: props.route.params.proyectoID,
+      });
+      setContinuos(false);
+      console.log(resApi);
+      if (resApi.data) {
+        Alert.alert(resApi.data.message || resApi.data);
+        setModal(false);
+      } else {
+        setMessage('Salida Registrada');
+        setModal(false);
+      }
+    } catch (error) {
+      console.log(error);
     }
   };
   const registerVisitEntry = async () => {
-    const resApi = await BaseApi.post('/visits/visitEntry', {
-      id: userId,
-      proyectoID: props.route.params.proyectoID,
-    });
-    setContinuos(false);
-    console.log(resApi);
-    if (resApi.data) {
-      Alert.alert(resApi.data.message || resApi.data);
-      setModal(false);
-    } else {
-      setMessage('Entrada Registrada');
-      setModal(false);
+    try {
+      const resApi = await BaseApi.post('/visits/visitEntry', {
+        id: userId,
+        proyectoID: props.route.params.proyectoID,
+      });
+      setContinuos(false);
+      console.log(resApi);
+      if (resApi.data) {
+        Alert.alert(resApi.data.message || resApi.data);
+        setModal(false);
+      } else {
+        setMessage('Entrada Registrada');
+        setModal(false);
+      }
+    } catch (error) {
+      console.log(error);
     }
   };
 

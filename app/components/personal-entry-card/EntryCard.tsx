@@ -26,43 +26,41 @@ const EntryCard = props => {
   const id = {id: props.route.params.id};
 
   const registerEntry = async () => {
-    // BaseApi.post('/employees/employeeEntry', {
-    //   id: props.route.params.id,
-    //   proyectoID: props.route.params.proyectoID,
-    // }).then(resApi => {
-    //   navigation.navigate('ScanQr', {
-    //     proyectoID: props.user.data.proyectoID,
-    //   });
-    //   if (resApi.data) {
-    //     Alert.alert(resApi.data.message || resApi.data);
-    //   }
-    // });
-    await BaseApi.post('/employees/employeeEntry', {
-      id: props.route.params.id,
-      proyectoID: props.route.params.proyectoID,
-    });
-    if (resApi.data) {
-      setStatus(resApi.data.message || resApi.data);
-    } else {
-      setStatus('Entrada Registrada');
+    try {
+      await BaseApi.post('/employees/employeeEntry', {
+        id: props.route.params.id,
+        proyectoID: props.route.params.proyectoID,
+      });
+      if (resApi.data) {
+        setStatus(resApi.data.message || resApi.data);
+      } else {
+        setStatus('Entrada Registrada');
+      }
+    } catch (error) {
+      console.log(error);
     }
+
     // props.route.params.navigation.navigate('ScanQr', {
     //   proyectoID: props.user.data.proyectoID,
     // });
   };
   const registerExit = async () => {
-    const resApi = await BaseApi.post('/employees/employeeExit', {
-      id: props.route.params.id,
-      proyectoID: props.route.params.proyectoID,
-    });
-    console.log(resApi);
-    if (resApi.data) {
-      alert(resApi.data.message || resApi.data);
-    } else {
-      console.log('Salida registrada');
-      props.route.params.navigation.goBack('ScanQr', {
-        proyectoID: props.user.data.proyectoID,
+    try {
+      const resApi = await BaseApi.post('/employees/employeeExit', {
+        id: props.route.params.id,
+        proyectoID: props.route.params.proyectoID,
       });
+      console.log(resApi);
+      if (resApi.data) {
+        Alert.alert(resApi.data.message || resApi.data);
+      } else {
+        console.log('Salida registrada');
+        props.route.params.navigation.goBack('ScanQr', {
+          proyectoID: props.user.data.proyectoID,
+        });
+      }
+    } catch (error) {
+      console.log(error);
     }
   };
 

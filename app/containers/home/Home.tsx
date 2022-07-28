@@ -62,10 +62,14 @@ const Home = (props: ScreenProps) => {
   };
 
   const getProyectName = async () => {
-    const res = await BaseApi.post('/project/getById', {
-      id: props.user.data.proyectoID,
-    });
-    setproject(res.data);
+    try {
+      const res = await BaseApi.post('/project/getById', {
+        id: props.user.data.proyectoID,
+      });
+      setproject(res.data);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const goToSecurity = (type?: 'entry' | 'exit') => async () => {
